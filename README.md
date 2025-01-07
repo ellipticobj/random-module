@@ -23,4 +23,10 @@ generate a number
 randomgen.randint()
 ```
 
+## roadmap
+add .dice() or .d6(), etc 
+add .choice()
+add .string()
+
 for documentation go [here](http://github.com/ellipticobj/random-module/DOCUMENTATION.md)
+
