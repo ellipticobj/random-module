@@ -3,10 +3,6 @@ from typing import Union, List
 
 url = "https://api.random.org/json-rpc/4/invoke"
 
-class GeneralError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 class RangeTooNarrowError(Exception):
     def __init__(self, message):
         super().__init__(message)
@@ -23,7 +19,7 @@ class Generator():
         default settings (no arguments) will generate one number between 1 to 100
         '''
 
-        if numofints > (maximum-minimum) and not allowduplicates:
+        if not allowduplicates and numofints <= (maximum - minimum):
             raise RangeTooNarrowError("Range of numbers should be more than or equal to numofints when allowduplicates is set to true.")
         
         if minimum >= maximum:
@@ -42,17 +38,25 @@ class Generator():
                 "max": maximum,
                 "replacement": allowduplicates
             },
+            "id": 1
         }
 
-        print(payload)
+        try: 
+            response = requests.post(url, json=payload)
+            response.raise_for_status()
 
-        response = requests.post(url, json=payload)
+            result = response.json()
 
-        if response.status_code == 200:
-            print(response.json())
-            raise GeneralError(f"{response.json()['error']['message']} (error code {response.json()['error']['code']})")
+            if "error" in result:
+                raise RuntimeError(f"{result['error']['message']} (error code {result['error']['code']})")
+
+            return result['result']['random']['data']
         
-        return response.json()['result']['random']['data']
+        except requests.exceptions.RequestException as e:
+            raise RuntimeError(f"Request failed: {str(e)}")
+        
+        except KeyError as e:
+            raise RuntimeError(f"Unexpected API response structure: {response.json()}. Open an issue at http://github.com/ellipticobj/random-module and include this error.")
     
 from dotenv import load_dotenv
 import os
@@ -61,4 +65,4 @@ load_dotenv()
 
 randgen = Generator(os.getenv("RANDOM_ORG_API_KEY"))
 
-print(randgen.randint(1, 3, 2))
+print(randgen.randint(1, 100, 100, False))
