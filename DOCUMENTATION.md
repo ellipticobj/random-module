@@ -1,5 +1,21 @@
 # docs (not well made pluh!)
 
+official documentatiol for this module
+
+# quickstart
+
+import the module 
+
+```python
+import randomorg_api as random
+```
+
+initialize the generator
+
+```python
+randgen = Generator(API_KEY_HERE)
+```
+
 # commands
 
 ## randint
