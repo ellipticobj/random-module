@@ -1,10 +1,15 @@
 # random
 a python module to get random numbers from random.org
 
-# basic implementation
+## basic implementation
+install the module
+```bash
+pip3 install randomorg_api
+```
+
 import the module 
 ```python
-import randomorg
+from randomorg_api import Generator
 ```
 
 initialize the generator 
