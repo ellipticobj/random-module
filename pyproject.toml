@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "randomorg_api"
-version = "0.0.2"
+version = "0.0.4"
 authors = [
   { name="Natalie Luna", email="luna@hackclub.app" },
 ]
@@ -32,7 +32,7 @@ keywords = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/randomorg-api"]
+packages = ["src/randomorg_api"]
 
 [project.urls]
 Home-page = "https://github.com/ellipticobj/random-module.git"
