@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "randomorg_api"
-version = "0.0.4"
+version = "0.0.6"
 authors = [
   { name="Natalie Luna", email="luna@hackclub.app" },
 ]
