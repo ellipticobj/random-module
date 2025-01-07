@@ -1,22 +1,39 @@
 [build-system]
-requires = ["hatchling", "requests"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "random_ellipticobj"
+name = "randomorg_ellipticobj"
 version = "0.0.1"
 authors = [
   { name="Natalie Luna", email="luna@hackclub.app" },
 ]
 description = "a small pip module to generate true random numbers using random.org's api"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU GENERAL PUBLIC LICENSE",
     "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha"
+]
+dependencies = [
+    "requests",
+    "json",
+    "os",
+    "python-dotenv"
+]
+keywords = [
+    "random",
+    "random.org",
+    "random org",
+    "random number",
+    "random number generator",
+    "random number generation",
+    "true random"
 ]
 
 [project.urls]
-Homepage = "https://github.com/ellipticobj/random-module"
+Homepage = "https://github.com/ellipticobj/random-module.git"
 Issues = "https://github.com/ellipticobj/random-module/issues"
