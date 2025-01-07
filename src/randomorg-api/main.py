@@ -57,12 +57,3 @@ class Generator():
         
         except KeyError as e:
             raise RuntimeError(f"Unexpected API response structure: {response.json()}. Open an issue at http://github.com/ellipticobj/random-module and include this error.")
-    
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-randgen = Generator(os.getenv("RANDOM_ORG_API_KEY"))
-
-print(randgen.randint(1, 100, 100, False))
